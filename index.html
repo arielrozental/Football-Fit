@@ -3,39 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Fit | חולצות כדורגל ב-70₪</title>
+    <title>Football Fit | חולצות ב-70 ש"ח</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --black: #000000; --green: #2ecc71; --gray: #1a1a1a; }
+        :root { --black: #0b0b0b; --green: #2ecc71; --gray: #1a1a1a; }
         body { font-family: 'Assistant', sans-serif; background-color: var(--black); color: white; margin: 0; padding: 0; }
-        header { background: rgba(0,0,0,0.9); padding: 15px; text-align: center; border-bottom: 2px solid var(--green); }
-        .logo { font-size: 24px; font-weight: 800; color: var(--green); }
-        .hero { text-align: center; padding: 30px 20px; background: #111; }
+        header { background: rgba(0,0,0,0.9); padding: 15px; text-align: center; border-bottom: 2px solid var(--green); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: 800; color: var(--green); }
         .container { max-width: 1200px; margin: auto; padding: 15px; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .product-card { background: var(--gray); border-radius: 12px; overflow: hidden; text-align: center; border: 1px solid #333; }
-        .product-image { width: 100%; height: auto; }
+        .section-title { border-right: 5px solid var(--green); padding-right: 10px; margin: 25px 0; font-size: 1.5rem; }
+        
+        /* גריד של החולצות */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        
+        /* כרטיס חולצה */
+        .product-card { background: var(--gray); border-radius: 12px; overflow: hidden; border: 1px solid #333; text-align: center; padding-bottom: 15px; }
+        .product-image { width: 100%; height: 300px; object-fit: cover; background: #222; }
         .product-info { padding: 15px; }
-        .price { font-size: 2.2rem; color: var(--green); font-weight: bold; margin: 10px 0; }
-        .btn { background: var(--green); color: black; padding: 15px; border-radius: 50px; font-weight: bold; text-decoration: none; display: block; font-size: 1.1rem; }
+        .price { font-size: 1.8rem; color: var(--green); font-weight: bold; margin: 10px 0; }
+        .size-selector { width: 90%; padding: 10px; margin-bottom: 10px; background: #222; color: white; border: 1px solid #444; border-radius: 5px; }
+        .btn { background: var(--green); color: black; padding: 12px; border: none; border-radius: 50px; font-weight: bold; width: 90%; cursor: pointer; }
+
+        /* כפתור וואטסאפ צף */
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
-<header><div class="logo">FOOTBALL FIT</div></header>
-<section class="hero"><h1>מבצע פתיחה: חולצות ב-70₪</h1></section>
+
+<header>
+    <div class="logo">FOOTBALL FIT</div>
+</header>
+
 <div class="container">
+    <h2 class="section-title">החולצות שלנו - רק ב-70 ש"ח</h2>
+    
     <div class="grid">
+        
+        <!-- חולצה מס' 1 -->
         <div class="product-card">
-            <img src="https://i.ibb.co/Xz9y0mY/japan-shirt.webp" class="product-image">
-            <div class="product-info"><h3>Japan Samurai Edition</h3><p class="price">₪70</p>
-            <a href="https://wa.me/972508353336" class="btn">הזמן עכשיו בוואטסאפ</a></div>
+            <!-- כאן למטה אתה מחליף את ה-src בלינק של התמונה שלך -->
+            <img src="https://via.placeholder.com/400x500?text=https://ibb.co/TMmwC4sB class="product-image">
+            <div class="product-info">
+                <h3>שם החולצה כאן</h3>
+                <p class="price">₪70.00</p>
+                <select class="size-selector">
+                    <option>בחר מידה</option>
+                    <option>S</option><option>M</option><option>L</option><option>XL</option>
+                </select>
+                <button class="btn">הוספה לסל</button>
+            </div>
         </div>
+
+        <!-- חולצה מס' 2 -->
         <div class="product-card">
-            <img src="https://i.ibb.co/PrtvYpG/brazil-shirt.webp" class="product-image">
-            <div class="product-info"><h3>Brazil Legacy Edition</h3><p class="price">₪70</p>
-            <a href="https://wa.me/972508353336" class="btn">הזמן עכשיו בוואטסאפ</a></div>
+            <img src="https://via.placeholder.com/400x500?text=https://ibb.co/Dg8Dvfvn class="product-image">
+            <div class="product-info">
+                <h3>שם החולצה כאן</h3>
+                <p class="price">₪70.00</p>
+                <select class="size-selector">
+                    <option>בחר מידה</option>
+                    <option>S</option><option>M</option><option>L</option><option>XL</option>
+                </select>
+                <button class="btn">הוספה לסל</button>
+            </div>
         </div>
-    </div>
-</div>
+
+<a href="https://wa.me/972508353336" class="whatsapp-float" target="_blank">
+    דברו איתנו בוואטסאפ 💬
+</a>
+
 </body>
 </html>
