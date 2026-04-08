@@ -3,73 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Fit | חולצות ב-70 ש"ח</title>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Football Fit | Official Store</title>
+    <!-- אייקונים -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --black: #0b0b0b; --green: #2ecc71; --gray: #1a1a1a; }
-        body { font-family: 'Assistant', sans-serif; background-color: var(--black); color: white; margin: 0; padding: 0; }
-        header { background: rgba(0,0,0,0.9); padding: 15px; text-align: center; border-bottom: 2px solid var(--green); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 22px; font-weight: 800; color: var(--green); }
-        .container { max-width: 1200px; margin: auto; padding: 15px; }
-        .section-title { border-right: 5px solid var(--green); padding-right: 10px; margin: 25px 0; font-size: 1.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product-card { background: var(--gray); border-radius: 12px; overflow: hidden; border: 1px solid #333; text-align: center; padding-bottom: 15px; }
-        .product-image { width: 100%; height: 350px; object-fit: cover; background: #222; }
-        .product-info { padding: 15px; }
-        .price { font-size: 1.8rem; color: var(--green); font-weight: bold; margin: 10px 0; }
-        .size-selector { width: 90%; padding: 10px; margin-bottom: 10px; background: #222; color: white; border: 1px solid #444; border-radius: 5px; }
-        .btn { background: var(--green); color: black; padding: 12px; border: none; border-radius: 50px; font-weight: bold; width: 90%; cursor: pointer; }
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        /* עיצוב בסיסי - סטייל מינימליסטי */
+        :root {
+            --main-color: #000000;
+            --bg-color: #ffffff;
+            --gray-light: #f4f4f4;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--main-color);
+            overflow-x: hidden;
+        }
+
+        /* Header - לוגו באמצע כמו שביקשת */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-right, .nav-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-left { justify-content: flex-end; }
+
+        .logo h1 {
+            font-size: 22px;
+            letter-spacing: 4px;
+            margin: 0;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: black;
+            color: white;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .collection-btn-area {
+            padding: 30px 0;
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 1px solid black;
+            padding: 12px 50px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .outline-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        /* גריד מוצרים */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* שניים בשורה כמו בתמונה */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .product-card img {
+            width: 100%;
+            background-color: var(--gray-light);
+            border-radius: 4px;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin: 10px 0 5px;
+            font-weight: 500;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            background: white;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-to-cart:hover {
+            opacity: 0.8;
+        }
+
+        /* וואטסאפ צף */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* בצד שמאל שלא יפריע */
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .logo h1 { font-size: 18px; }
+            .outline-btn { width: 90%; }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">FOOTBALL FIT</div>
-</header>
-
-<div class="container">
-    <h2 class="section-title">הקולקציה שלנו - 70 ש"ח לחולצה</h2>
-    
-    <div class="grid">
+    <!-- ניווט -->
+    <nav class="navbar">
+        <div class="nav-right">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
         
-        <!-- חולצה 1 -->
+        <div class="logo">
+            <h1>FOOTBALL FIT</h1>
+        </div>
+
+        <div class="nav-left">
+            <i class="fa-regular fa-user"></i>
+            <div class="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- באנר ראשי -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1000&auto=format&fit=crop" alt="Football Collection">
+        <div class="collection-btn-area">
+            <button class="outline-btn">ARE NEW COLLECTION</button>
+        </div>
+    </section>
+
+    <!-- מוצרים -->
+    <section class="product-grid">
+        <!-- מוצר 1 -->
         <div class="product-card">
-            <!-- 1. כאן למטה בתוך ה-src תדביק את הלינק של התמונה הראשונה -->
-            <img src="src=<a href=><img src="<a href='https://postimg.cc/WFcWvBnF' target='_blank'><img src='https://i.postimg.cc/WFcWvBnF/IMG-2504.png' border='0' alt='IMG-2504'></a>-class="product-image" alt="חולצה">
+            <img src="https://via.placeholder.com/400x500?text=Brazil+Shirt" alt="חולצת ברזיל">
             <div class="product-info">
-                <h3>חולצת ברזיל </h3> 
+                <h3>חולצת ברזיל פלה</h3>
                 <p class="price">₪70.00</p>
-                <select class="size-selector">
-                    <option>בחר מידה</option>
-                    <option>S</option><option>M</option><option>L</option><option>XL</option>
+                <select id="size-1">
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
                 </select>
-                <button class="btn">הוספה לסל</button>
+                <button class="add-to-cart" onclick="addToCart('ברזיל פלה', 70, 'size-1')">הוספה לסל</button>
             </div>
         </div>
 
-        <!-- חולצה 2 -->
+        <!-- מוצר 2 -->
         <div class="product-card">
-            <!-- 2. כאן למטה בתוך ה-src תדביק את הלינק של התמונה השנייה -->
-            <img src=<a href='https://postimg.cc/nsXbrfBD' target='_blank'><img src='https://i.postimg.cc/nsXbrfBD/B6BE1649-4F29-42D8-A15F-207686DE0D50.png' border='0' alt='B6BE1649-4F29-42D8-A15F-207686DE0D50'></a> class="product-image" alt="חולצה">
+            <img src="https://via.placeholder.com/400x500?text=Japan+Shirt" alt="חולצת יפן">
             <div class="product-info">
-                <h3> חולצת יפן </h3> 
+                <h3>חולצת יפן מהדורה מיוחדת</h3>
                 <p class="price">₪70.00</p>
-                <select class="size-selector">
-                    <option>בחר מידה</option>
-                    <option>S</option><option>M</option><option>L</option><option>XL</option>
+                <select id="size-2">
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
                 </select>
-                <button class="btn">הוספה לסל</button>
+                <button class="add-to-cart" onclick="addToCart('יפן ספיישל', 70, 'size-2')">הוספה לסל</button>
             </div>
         </div>
+    </section>
 
-    </div>
-</div>
+    <!-- כפתור וואטסאפ צף -->
+    <a href="https://wa.me/972508353336" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-<!-- קישור לוואטסאפ שלך -->
-<a href="https://wa.me/972508353336" class="whatsapp-float" target="_blank">
-    שלחו לנו הודעה 💬
-</a>
+    <script>
+        let cartCount = 0;
+        const phoneNumber = "972508353336"; // שים פה את המספר האמיתי שלך
 
+        function addToCart(name, price, sizeId) {
+            const size = document.getElementById(sizeId).value;
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+
+            // יצירת הודעת וואטסאפ אוטומטית
+            const message = `היי Football Fit, אני רוצה להזמין:
+מוצר: ${name}
+מידה: ${size}
+מחיר: ₪${price}`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            // פתיחת וואטסאפ לאחר חצי שנייה (כדי שיראו את העגלה מתעדכנת)
+            setTimeout(() => {
+                if(confirm("המוצר נוסף! לעבור לוואטסאפ להשלמת הזמנה?")) {
+                    window.open(whatsappUrl, '_blank');
+                }
+            }, 500);
+        }
+    </script>
 </body>
 </html>
