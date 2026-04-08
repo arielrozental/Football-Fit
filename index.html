@@ -7,7 +7,6 @@
     <!-- אייקונים -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* עיצוב בסיסי - סטייל מינימליסטי */
         :root {
             --main-color: #000000;
             --bg-color: #ffffff;
@@ -22,7 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* Header - לוגו באמצע כמו שביקשת */
+        /* Header */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -109,7 +108,7 @@
         /* גריד מוצרים */
         .product-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* שניים בשורה כמו בתמונה */
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
             padding: 20px;
             max-width: 1000px;
@@ -123,6 +122,8 @@
 
         .product-card img {
             width: 100%;
+            aspect-ratio: 4/5; /* שומר על גובה אחיד לכל התמונות */
+            object-fit: cover;
             background-color: var(--gray-light);
             border-radius: 4px;
         }
@@ -165,7 +166,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
-            left: 20px; /* בצד שמאל שלא יפריע */
+            left: 20px;
             background-color: #25d366;
             color: white;
             width: 60px;
@@ -217,9 +218,10 @@
 
     <!-- מוצרים -->
     <section class="product-grid">
-        <!-- מוצר 1 -->
+        <!-- מוצר 1 - ברזיל -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500?text=Brazil+Shirt" alt="חולצת ברזיל">
+            <!-- כאן שמתי את הקישור ששלחת לברזיל -->
+            <img src="https://i.ibb.co/Dg8Dvfvn/brazil.jpg" alt="חולצת ברזיל פלה">
             <div class="product-info">
                 <h3>חולצת ברזיל פלה</h3>
                 <p class="price">₪70.00</p>
@@ -233,9 +235,10 @@
             </div>
         </div>
 
-        <!-- מוצר 2 -->
+        <!-- מוצר 2 - יפן -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500?text=Japan+Shirt" alt="חולצת יפן">
+            <!-- כאן שמתי את הקישור ששלחת ליפן -->
+            <img src="https://i.ibb.co/TMmwC4sB/japan.jpg" alt="חולצת יפן">
             <div class="product-info">
                 <h3>חולצת יפן מהדורה מיוחדת</h3>
                 <p class="price">₪70.00</p>
@@ -257,14 +260,13 @@
 
     <script>
         let cartCount = 0;
-        const phoneNumber = "972508353336"; // שים פה את המספר האמיתי שלך
+        const phoneNumber = "972508353336"; 
 
         function addToCart(name, price, sizeId) {
             const size = document.getElementById(sizeId).value;
             cartCount++;
             document.getElementById('cart-count').innerText = cartCount;
 
-            // יצירת הודעת וואטסאפ אוטומטית
             const message = `היי Football Fit, אני רוצה להזמין:
 מוצר: ${name}
 מידה: ${size}
@@ -272,7 +274,6 @@
             
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-            // פתיחת וואטסאפ לאחר חצי שנייה (כדי שיראו את העגלה מתעדכנת)
             setTimeout(() => {
                 if(confirm("המוצר נוסף! לעבור לוואטסאפ להשלמת הזמנה?")) {
                     window.open(whatsappUrl, '_blank');
