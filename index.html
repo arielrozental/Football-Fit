@@ -70,7 +70,6 @@
         /* באנר ראשי */
         .hero {
             width: 100%;
-            background-color: #f9f9f9;
         }
 
         .hero img {
@@ -95,7 +94,6 @@
             padding: 10px;
             text-align: center;
             border-radius: 8px;
-            transition: 0.3s;
         }
 
         .product-card img {
@@ -111,7 +109,6 @@
             font-size: 15px;
             margin: 5px 0;
             height: 40px;
-            overflow: hidden;
         }
 
         .price {
@@ -127,7 +124,6 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-family: inherit;
         }
 
         .add-to-cart {
@@ -139,11 +135,6 @@
             cursor: pointer;
             font-weight: bold;
             border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .add-to-cart:active {
-            transform: scale(0.98);
         }
 
         /* וואטסאפ צף */
@@ -168,13 +159,11 @@
         @media (max-width: 600px) {
             .logo h1 { font-size: 18px; }
             .product-grid { gap: 10px; padding: 10px; }
-            .product-info h3 { font-size: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- סרגל עליון -->
     <nav class="navbar">
         <div class="nav-icons"><i class="fa-solid fa-magnifying-glass"></i></div>
         <div class="logo"><h1>FOOTBALL FIT</h1></div>
@@ -186,33 +175,15 @@
         </div>
     </nav>
 
-    <!-- באנר -->
     <section class="hero">
         <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1000&auto=format&fit=crop" alt="Football Banner">
     </section>
 
-    <!-- גריד מוצרים -->
     <section class="product-grid">
         
-        <!-- מוצר 1 - ברזיל -->
+        <!-- מוצר 1 - יפן (הקישור הראשון ששלחת) -->
         <div class="product-card">
-            <img src="https://i.ibb.co/WRHTwBH/1-F1-A1530-8037-4-B6-F-9425-539031-A84-CCD.png" alt="חולצת ברזיל">
-            <div class="product-info">
-                <h3>חולצת ברזיל רטרו</h3>
-                <span class="price">₪70.00</span>
-                <select id="size-brazil">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-                <button class="add-to-cart" onclick="addToCart('ברזיל רטרו', 70, 'size-brazil')">הוספה לסל</button>
-            </div>
-        </div>
-
-        <!-- מוצר 2 - יפן -->
-        <div class="product-card">
-            <img src="https://i.ibb.co/4rYMPbd/D58-E4645-36-A1-4650-B55-B-CB3-A511-B5-B48.png" alt="חולצת יפן">
+            <img src="https://i.ibb.co/WRHTwBH/1-F1-A1530-8037-4-B6-F-9425-539031-A84-CCD.png" alt="חולצת יפן">
             <div class="product-info">
                 <h3>חולצת יפן Special Edition</h3>
                 <span class="price">₪70.00</span>
@@ -226,9 +197,24 @@
             </div>
         </div>
 
+        <!-- מוצר 2 - ברזיל (הקישור השני ששלחת) -->
+        <div class="product-card">
+            <img src="https://i.ibb.co/4rYMPbd/D58-E4645-36-A1-4650-B55-B-CB3-A511-B5-B48.png" alt="חולצת ברזיל">
+            <div class="product-info">
+                <h3>חולצת ברזיל רטרו</h3>
+                <span class="price">₪70.00</span>
+                <select id="size-brazil">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <button class="add-to-cart" onclick="addToCart('ברזיל רטרו', 70, 'size-brazil')">הוספה לסל</button>
+            </div>
+        </div>
+
     </section>
 
-    <!-- כפתור וואטסאפ -->
     <a href="https://wa.me/972508353336" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -249,7 +235,6 @@
             
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-            // הודעה קופצת יפה
             if(confirm(`הוספת לסל: ${name} במידה ${size}.\nלעבור לוואטסאפ להשלמת הזמנה?`)) {
                 window.open(whatsappUrl, '_blank');
             }
