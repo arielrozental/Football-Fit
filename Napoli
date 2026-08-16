@@ -3,183 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAPOLI - חנות רשמית</title>
+    <title>NAPOLI | Official Store</title>
     <style>
-        :root {
-            --napoli-blue: #0077b6;
-            --dark-blue: #003049;
-            --white: #ffffff;
+        /* עיצוב כללי בסגנון המותג */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #f0f4f8;
-            color: #333;
+        /* תפריט עליון */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+            border-bottom: 1px solid #222;
+        }
+
+        nav .logo { font-size: 24px; font-weight: bold; letter-spacing: 3px; }
+        nav .links { display: flex; gap: 20px; font-size: 12px; text-transform: uppercase; }
+        nav .links a { color: white; text-decoration: none; opacity: 0.7; transition: 0.3s; }
+        nav .links a:hover { opacity: 1; }
+
+        /* סקשן הירו (התמונה הראשית) */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hero-bg.jpg'); /* שים כאן תמונה כללית של המותג */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
-        header {
-            background-color: var(--napoli-blue);
+        .hero h1 { font-size: 80px; margin: 0; letter-spacing: 10px; }
+        .hero .shop-now {
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: 1px solid white;
+            background: transparent;
             color: white;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
+        .hero .shop-now:hover { background: white; color: black; }
 
+        /* כותרת SHOP */
+        .shop-title { text-align: center; padding: 50px 0; font-size: 30px; letter-spacing: 5px; }
+
+        /* גריד מוצרים */
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        /* עיצוב דף הבית - רשימת מוצרים */
-        .product-list {
-            display: flex;
-            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
+            padding: 20px;
         }
 
         .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #000;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .product-card:hover { transform: scale(1.02); }
-
         .product-card img {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            display: block;
+            background-color: #111; /* צבע רקע לתמונה אם היא נטענת */
         }
 
-        .product-card h2 { padding: 15px; margin: 0; color: var(--dark-blue); }
+        .product-info {
+            padding: 20px 0;
+            border-top: 1px solid #222;
+        }
 
-        /* עיצוב דף מוצר (מוסתר בהתחלה) */
-        .product-detail {
+        .product-info h3 { margin: 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .product-info p { margin: 5px 0; color: #888; font-size: 14px; }
+        .price { font-weight: bold; margin-top: 10px; }
+
+        /* דף מוצר (מוסתר) */
+        #detail-page {
             display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .product-detail img {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 500px;
-            border-radius: 10px;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+            padding: 50px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
         }
 
-        .description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 20px 0;
-            color: #555;
+        .detail-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .back-btn {
-            background: #666;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
+        .detail-content img { width: 100%; border-radius: 5px; }
+        .detail-content h2 { font-size: 32px; letter-spacing: 3px; margin: 30px 0; }
+        .detail-description { color: #ccc; line-height: 1.8; margin-bottom: 40px; }
 
         .whatsapp-btn {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 15px 30px;
+            display: block;
+            background: white;
+            color: black;
+            padding: 20px;
             text-decoration: none;
-            border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
 
-        footer { margin-top: 50px; color: #999; padding-bottom: 30px; }
+        .whatsapp-btn:hover { opacity: 0.8; }
+        .close-btn { color: white; background: none; border: none; font-size: 30px; cursor: pointer; position: absolute; top: 20px; right: 20px; }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid #222;
+            margin-top: 100px;
+            color: #444;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>NAPOLI</h1>
-</header>
+<nav>
+    <div class="logo">NAPOLI</div>
+    <div class="links">
+        <a href="#" onclick="showHome()">HOME</a>
+        <a href="#">SHOP</a>
+        <a href="#">ABOUT</a>
+        <a href="#">CONTACT</a>
+    </div>
+</nav>
 
-<div class="container">
-    
-    <!-- דף הבית: רשימת המוצרים -->
-    <div id="home-page" class="product-list">
-        <div class="product-card" onclick="showProduct('shirt')">
-            <!-- תחליף את shirt.jpg בשם התמונה שלך -->
-            <img src="shirt.jpg" alt="חולצת נאפולי">
-            <h2>חולצת נאפולי</h2>
-        </div>
-
-        <div class="product-card" onclick="showProduct('shorts')">
-            <!-- תחליף את shorts.jpg בשם התמונה שלך -->
-            <img src="shorts.jpg" alt="מכנס נאפולי">
-            <h2>מכנס נאפולי</h2>
-        </div>
+<div id="home-view">
+    <div class="hero">
+        <h1>NAPOLI</h1>
+        <button class="shop-now">SHOP NOW</button>
     </div>
 
-    <!-- דף פירוט מוצר -->
-    <div id="detail-page" class="product-detail">
-        <button class="back-btn" onclick="showHome()">→ חזרה לחנות</button>
-        <img id="detail-img" src="" alt="מוצר">
+    <div class="shop-title">SHOP</div>
+
+    <div class="container">
+        <!-- מוצר 1 -->
+        <div class="product-card" onclick="openProduct('shirt')">
+            <img src="shirt.jpg" alt="NAPOLI TEE">
+            <div class="product-info">
+                <h3>NAPOLI TEE</h3>
+                <p>BLACK</p>
+                <div class="price">₪150.00</div>
+            </div>
+        </div>
+
+        <!-- מוצר 2 -->
+        <div class="product-card" onclick="openProduct('shorts')">
+            <img src="shorts.jpg" alt="NAPOLI SHORTS">
+            <div class="product-info">
+                <h3>NAPOLI SHORTS</h3>
+                <p>BLACK</p>
+                <div class="price">₪150.00</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- דף מוצר -->
+<div id="detail-page">
+    <button class="close-btn" onclick="showHome()">×</button>
+    <div class="detail-content">
+        <img id="detail-img" src="" alt="">
         <h2 id="detail-title"></h2>
-        <div class="description">
-            100% כותנה, נשמרת טוב, נוחה לכל כיס וגם לכל בן אדם.
-            <br>
-            <strong>תודה שקניתם נאפולי!</strong>
-        </div>
-        <a id="whatsapp-link" href="#" class="whatsapp-btn">הזמן עכשיו ב-WhatsApp</a>
+        <p class="detail-description">
+            100% כותנה איכותית. <br>
+            החולצה נשמרת מצוין בכביסה, נוחה לכל כיס ומתאימה לכל אדם. <br><br>
+            <strong>תודה שקניתם נאפולי.</strong>
+        </p>
+        <a id="wa-link" href="#" class="whatsapp-btn">להזמנה ב-WhatsApp</a>
     </div>
-
 </div>
 
 <footer>
-    &copy; 2024 Napoli Design
+    © 2024 NAPOLI. ALL RIGHTS RESERVED.
 </footer>
 
 <script>
-    function showProduct(type) {
-        // הסתרת דף הבית והצגת דף המוצר
-        document.getElementById('home-page').style.display = 'none';
+    function openProduct(type) {
+        document.getElementById('home-view').style.display = 'none';
         document.getElementById('detail-page').style.display = 'block';
-
+        
         const title = document.getElementById('detail-title');
         const img = document.getElementById('detail-img');
-        const waLink = document.getElementById('whatsapp-link');
-        
-        const myPhone = "972508353336";
+        const link = document.getElementById('wa-link');
+        const phone = "972508353336";
 
-        if (type === 'shirt') {
-            title.innerText = "חולצת נאפולי";
-            img.src = "shirt.jpg"; // שם תמונת החולצה שלך
-            waLink.href = `https://wa.me/${myPhone}?text=היי, אני רוצה להזמין את חולצת נאפולי`;
+        if(type === 'shirt') {
+            title.innerText = "NAPOLI TEE";
+            img.src = "shirt.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי`;
         } else {
-            title.innerText = "מכנס נאפולי";
-            img.src = "shorts.jpg"; // שם תמונת המכנס שלך
-            waLink.href = `https://wa.me/${myPhone}?text=היי, אני רוצה להזמין את מכנס נאפולי`;
+            title.innerText = "NAPOLI SHORTS";
+            img.src = "shorts.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנס נאפולי`;
         }
-        
         window.scrollTo(0,0);
     }
 
     function showHome() {
-        document.getElementById('home-page').style.display = 'flex';
+        document.getElementById('home-view').style.display = 'block';
         document.getElementById('detail-page').style.display = 'none';
     }
 </script>
