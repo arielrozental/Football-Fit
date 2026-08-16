@@ -28,7 +28,7 @@
         nav .links a { color: white; text-decoration: none; opacity: 0.7; }
 
         .hero {
-            height: 60vh;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -61,6 +61,8 @@
 
         .product-card img {
             width: 100%;
+            height: 380px;
+            object-fit: cover;
             display: block;
             background-color: #111;
         }
@@ -94,7 +96,14 @@
             text-align: center;
         }
 
-        .detail-content img { width: 100%; border-radius: 5px; margin-bottom: 20px; }
+        .detail-content img { 
+            width: 100%; 
+            max-height: 450px;
+            object-fit: contain;
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+        }
+
         .detail-content h2 { font-size: 28px; margin-bottom: 10px; }
         .detail-price { font-size: 24px; color: #fff; margin-bottom: 20px; font-weight: bold; }
         .detail-description { color: #ccc; line-height: 1.8; margin-bottom: 30px; font-size: 16px; }
@@ -109,6 +118,46 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* אזור עזרה ותמיכה */
+        .help-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #111;
+            border: 1px solid #222;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .help-section h3 {
+            margin-top: 0;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .help-section p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .help-btn {
+            display: inline-block;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .help-btn:hover {
+            background-color: #fff;
+            color: #000;
         }
 
         .close-btn { color: white; background: none; border: none; font-size: 40px; cursor: pointer; position: absolute; top: 10px; right: 20px; }
@@ -122,7 +171,7 @@
     <div class="logo">NAPOLI</div>
     <div class="links">
         <a href="#" onclick="showHome()">HOME</a>
-        <a href="#">SHOP</a>
+        <a href="#collection">SHOP</a>
     </div>
 </nav>
 
@@ -131,12 +180,12 @@
         <h1>NAPOLI</h1>
     </div>
 
-    <div class="shop-title">COLLECTION</div>
+    <div id="collection" class="shop-title">COLLECTION</div>
 
     <div class="container">
         <!-- חולצה -->
         <div class="product-card" onclick="openProduct('shirt')">
-            <img src="shirt.jpg" alt="NAPOLI TEE">
+            <img src="https://i.ibb.co/3DsF0G9/8a767e44-7d44-4a55-9626-8de6dad96984.jpg" alt="NAPOLI TEE">
             <div class="product-info">
                 <h3>NAPOLI TEE</h3>
                 <div class="price">₪70</div>
@@ -145,12 +194,19 @@
 
         <!-- מכנס -->
         <div class="product-card" onclick="openProduct('shorts')">
-            <img src="shorts.jpg" alt="NAPOLI SHORTS">
+            <img src="https://i.ibb.co/KxfrB6TS/IMG-6307.png" alt="NAPOLI SHORTS">
             <div class="product-info">
                 <h3>NAPOLI SHORTS</h3>
                 <div class="price">₪70</div>
             </div>
         </div>
+    </div>
+
+    <!-- אזור תמיכה ועזרה -->
+    <div class="help-section" style="max-width: 800px; margin: 50px auto 0 auto;">
+        <h3>צריכים עזרה?</h3>
+        <p>יש לכם שאלה לגבי מידות, משלוחים או הזמנה מיוחדת? אנחנו כאן לכל דבר.</p>
+        <a href="https://wa.me/972508353336?text=היי, אני צריך עזרה בנוגע להזמנה באתר נאפולי" target="_blank" class="help-btn">שליחת הודעה ב-WhatsApp</a>
     </div>
 </div>
 
@@ -168,7 +224,6 @@
             <strong>תודה שקניתם נאפולי!</strong>
         </p>
 
-        <!-- כאן יופיע ה"קוד" של החולצה אם תוסיף כזה -->
         <div id="extra-code-area" style="margin-bottom: 20px;"></div>
 
         <a id="wa-link" href="#" class="whatsapp-btn">להזמנה ב-WhatsApp</a>
@@ -192,17 +247,15 @@
 
         if(type === 'shirt') {
             title.innerText = "NAPOLI TEE";
-            img.src = "shirt.jpg";
+            img.src = "https://i.ibb.co/3DsF0G9/8a767e44-7d44-4a55-9626-8de6dad96984.jpg";
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי במחיר 70 ש"ח`;
-            
-            // כאן המקום שבו נשים את הקוד שתביא לי לחולצה:
-            extraArea.innerHTML = `<!-- הקוד שתביא לי ייכנס כאן -->`;
+            extraArea.innerHTML = ``;
             
         } else {
             title.innerText = "NAPOLI SHORTS";
-            img.src = "shorts.jpg";
+            img.src = "https://i.ibb.co/KxfrB6TS/IMG-6307.png";
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנס נאפולי במחיר 70 ש"ח`;
-            extraArea.innerHTML = ""; // למכנס אין קוד מיוחד כרגע
+            extraArea.innerHTML = "";
         }
         window.scrollTo(0,0);
     }
