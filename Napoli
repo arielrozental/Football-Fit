@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAPOLI - חנות רשמית</title>
+    <style>
+        :root {
+            --napoli-blue: #0077b6;
+            --dark-blue: #003049;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: var(--napoli-blue);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* עיצוב דף הבית - רשימת מוצרים */
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .product-card:hover { transform: scale(1.02); }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-card h2 { padding: 15px; margin: 0; color: var(--dark-blue); }
+
+        /* עיצוב דף מוצר (מוסתר בהתחלה) */
+        .product-detail {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-detail img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .back-btn {
+            background: #666;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+        }
+
+        footer { margin-top: 50px; color: #999; padding-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>NAPOLI</h1>
+</header>
+
+<div class="container">
+    
+    <!-- דף הבית: רשימת המוצרים -->
+    <div id="home-page" class="product-list">
+        <div class="product-card" onclick="showProduct('shirt')">
+            <!-- תחליף את shirt.jpg בשם התמונה שלך -->
+            <img src="shirt.jpg" alt="חולצת נאפולי">
+            <h2>חולצת נאפולי</h2>
+        </div>
+
+        <div class="product-card" onclick="showProduct('shorts')">
+            <!-- תחליף את shorts.jpg בשם התמונה שלך -->
+            <img src="shorts.jpg" alt="מכנס נאפולי">
+            <h2>מכנס נאפולי</h2>
+        </div>
+    </div>
+
+    <!-- דף פירוט מוצר -->
+    <div id="detail-page" class="product-detail">
+        <button class="back-btn" onclick="showHome()">→ חזרה לחנות</button>
+        <img id="detail-img" src="" alt="מוצר">
+        <h2 id="detail-title"></h2>
+        <div class="description">
+            100% כותנה, נשמרת טוב, נוחה לכל כיס וגם לכל בן אדם.
+            <br>
+            <strong>תודה שקניתם נאפולי!</strong>
+        </div>
+        <a id="whatsapp-link" href="#" class="whatsapp-btn">הזמן עכשיו ב-WhatsApp</a>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2024 Napoli Design
+</footer>
+
+<script>
+    function showProduct(type) {
+        // הסתרת דף הבית והצגת דף המוצר
+        document.getElementById('home-page').style.display = 'none';
+        document.getElementById('detail-page').style.display = 'block';
+
+        const title = document.getElementById('detail-title');
+        const img = document.getElementById('detail-img');
+        const waLink = document.getElementById('whatsapp-link');
+        
+        const myPhone = "972508353336";
+
+        if (type === 'shirt') {
+            title.innerText = "חולצת נאפולי";
+            img.src = "shirt.jpg"; // שם תמונת החולצה שלך
+            waLink.href = `https://wa.me/${myPhone}?text=היי, אני רוצה להזמין את חולצת נאפולי`;
+        } else {
+            title.innerText = "מכנס נאפולי";
+            img.src = "shorts.jpg"; // שם תמונת המכנס שלך
+            waLink.href = `https://wa.me/${myPhone}?text=היי, אני רוצה להזמין את מכנס נאפולי`;
+        }
+        
+        window.scrollTo(0,0);
+    }
+
+    function showHome() {
+        document.getElementById('home-page').style.display = 'flex';
+        document.getElementById('detail-page').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
