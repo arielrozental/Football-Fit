@@ -3,121 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>חנות בגדים</title>
+    <title>NAPOLI | Official Store</title>
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            direction: rtl;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+            border-bottom: 1px solid #222;
         }
 
-        header {
-            background-color: #222;
-            color: #fff;
-            padding: 20px;
+        nav .logo { font-size: 24px; font-weight: bold; letter-spacing: 3px; }
+        nav .links { display: flex; gap: 20px; font-size: 12px; text-transform: uppercase; }
+        nav .links a { color: white; text-decoration: none; opacity: 0.7; }
+
+        .hero {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            background: linear-gradient(to bottom, #000, #111);
         }
 
-        header h1 {
-            margin-bottom: 10px;
-        }
+        .hero h1 { font-size: 60px; margin: 0; letter-spacing: 10px; }
+
+        .shop-title { text-align: center; padding: 40px 0; font-size: 24px; letter-spacing: 5px; border-top: 1px solid #222; }
 
         .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .products-grid {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 25px;
+            padding: 20px;
         }
 
         .product-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px;
-            transition: transform 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: auto;
-            max-height: 300px;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin: 15px 0 10px 0;
-            font-weight: bold;
-        }
-
-        .buy-btn {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
+            background-color: #050505;
             cursor: pointer;
-            margin-top: auto;
-            transition: background-color 0.2s;
+            border: 1px solid #1a1a1a;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: 0.3s;
         }
 
-        .buy-btn:hover {
-            background-color: #218838;
+        .product-card:hover { border: 1px solid #444; }
+
+        /* הגדרות לתמונות לאורך ללא חיתוך */
+        .product-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4; /* מציג את התמונה לאורך */
+            object-fit: contain; /* שומר על התמונה שלמה בלי לקטוע קצוות */
+            display: block;
+            background-color: #0a0a0a;
+            padding: 10px;
+            box-sizing: border-box;
         }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .product-info h3 { margin: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .price { font-weight: bold; margin-top: 10px; color: #fff; font-size: 18px; }
+
+        /* דף מוצר */
+        #detail-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .detail-content {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .detail-content img { 
+            width: 100%; 
+            height: auto;
+            max-height: 550px;
+            object-fit: contain;
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+            background-color: #0a0a0a;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .detail-content h2 { font-size: 28px; margin-bottom: 10px; }
+        .detail-price { font-size: 24px; color: #fff; margin-bottom: 20px; font-weight: bold; }
+        .detail-description { color: #ccc; line-height: 1.8; margin-bottom: 30px; font-size: 16px; }
+
+        .whatsapp-btn {
+            display: block;
+            background: white;
+            color: black;
+            padding: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* אזור עזרה ותמיכה */
+        .help-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #111;
+            border: 1px solid #222;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .help-section h3 {
+            margin-top: 0;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .help-section p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .help-btn {
+            display: inline-block;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .help-btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .close-btn { color: white; background: none; border: none; font-size: 40px; cursor: pointer; position: absolute; top: 10px; right: 20px; }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid #222; color: #444; font-size: 11px; margin-top: 50px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>החנות שלי</h1>
-        <p>קולקציית חולצות ומכנסיים</p>
-    </header>
+<nav>
+    <div class="logo">NAPOLI</div>
+    <div class="links">
+        <a href="#" onclick="showHome()">HOME</a>
+        <a href="#collection">SHOP</a>
+    </div>
+</nav>
+
+<div id="home-view">
+    <div class="hero">
+        <h1>NAPOLI</h1>
+    </div>
+
+    <div id="collection" class="shop-title">COLLECTION</div>
 
     <div class="container">
-        <div class="products-grid">
-            
-            <!-- מוצר 1: מכנסיים -->
-            <div class="product-card">
-                <a href="https://ibb.co/Myx6xxwh" target="_blank">
-                    <img src="https://i.ibb.co/p6ByBBVP/DE514-E19-3-C4-D-455-D-B53-B-1-A60-B0003521.jpg" alt="מכנסיים">
-                </a>
-                <div class="product-title">מכנסיים</div>
-                <button class="buy-btn">לקנייה</button>
+        <!-- חולצה 1 -->
+        <div class="product-card" onclick="openProduct('shirt')">
+            <img src="https://i.ibb.co/3DsF0G9/8a767e44-7d44-4a55-9626-8de6dad96984.jpg" alt="NAPOLI TEE">
+            <div class="product-info">
+                <h3>NAPOLI TEE</h3>
+                <div class="price">₪70</div>
             </div>
+        </div>
 
-            <!-- מוצר 2: חולצה -->
-            <div class="product-card">
-                <a href="https://ibb.co/rSvmvPh" target="_blank">
-                    <img src="https://i.ibb.co/VZ3t3yG/IMG-6331.jpg" alt="חולצה שנייה">
-                </a>
-                <div class="product-title">חולצה</div>
-                <button class="buy-btn">לקנייה</button>
+        <!-- מכנס 1 -->
+        <div class="product-card" onclick="openProduct('shorts')">
+            <img src="https://i.ibb.co/KxfrB6TS/IMG-6307.png" alt="NAPOLI SHORTS">
+            <div class="product-info">
+                <h3>NAPOLI SHORTS</h3>
+                <div class="price">₪70</div>
             </div>
+        </div>
 
+        <!-- מכנס 2 (חדש) -->
+        <div class="product-card" onclick="openProduct('pants2')">
+            <img src="https://i.ibb.co/p6ByBBVP/DE514-E19-3-C4-D-455-D-B53-B-1-A60-B0003521.jpg" alt="NAPOLI PANTS V2">
+            <div class="product-info">
+                <h3>NAPOLI PANTS V2</h3>
+                <div class="price">₪70</div>
+            </div>
+        </div>
+
+        <!-- חולצה 2 (חדש) -->
+        <div class="product-card" onclick="openProduct('shirt2')">
+            <img src="https://i.ibb.co/VZ3t3yG/IMG-6331.jpg" alt="NAPOLI TEE V2">
+            <div class="product-info">
+                <h3>NAPOLI TEE V2</h3>
+                <div class="price">₪70</div>
+            </div>
         </div>
     </div>
+
+    <!-- אזור תמיכה ועזרה -->
+    <div class="help-section" style="max-width: 800px; margin: 50px auto 0 auto;">
+        <h3>צריכים עזרה?</h3>
+        <p>יש לכם שאלה לגבי מידות, משלוחים או הזמנה מיוחדת? אנחנו כאן לכל דבר.</p>
+        <a href="https://wa.me/972508353336?text=היי, אני צריך עזרה בנוגע להזמנה באתר נאפולי" target="_blank" class="help-btn">שליחת הודעה ב-WhatsApp</a>
+    </div>
+</div>
+
+<!-- דף מוצר -->
+<div id="detail-page">
+    <button class="close-btn" onclick="showHome()">×</button>
+    <div class="detail-content">
+        <img id="detail-img" src="" alt="">
+        <h2 id="detail-title"></h2>
+        <div id="detail-price" class="detail-price">₪70</div>
+        
+        <p class="detail-description">
+            100% כותנה איכותית. <br>
+            נשמרת טוב, נוחה לכל כיס וגם לכל בן אדם. <br><br>
+            <strong>תודה שקניתם נאפולי!</strong>
+        </p>
+
+        <div id="extra-code-area" style="margin-bottom: 20px;"></div>
+
+        <a id="wa-link" href="#" class="whatsapp-btn">להזמנה ב-WhatsApp</a>
+    </div>
+</div>
+
+<footer>
+    © 2024 NAPOLI. ALL RIGHTS RESERVED.
+</footer>
+
+<script>
+    function openProduct(type) {
+        document.getElementById('home-view').style.display = 'none';
+        document.getElementById('detail-page').style.display = 'block';
+        
+        const title = document.getElementById('detail-title');
+        const img = document.getElementById('detail-img');
+        const link = document.getElementById('wa-link');
+        const extraArea = document.getElementById('extra-code-area');
+        const phone = "972508353336";
+
+        if(type === 'shirt') {
+            title.innerText = "NAPOLI TEE";
+            img.src = "https://i.ibb.co/3DsF0G9/8a767e44-7d44-4a55-9626-8de6dad96984.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי במחיר 70 ש"ח`;
+            extraArea.innerHTML = ``;
+            
+        } else if(type === 'shorts') {
+            title.innerText = "NAPOLI SHORTS";
+            img.src = "https://i.ibb.co/KxfrB6TS/IMG-6307.png";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנס נאפולי במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+
+        } else if(type === 'pants2') {
+            title.innerText = "NAPOLI PANTS V2";
+            img.src = "https://i.ibb.co/p6ByBBVP/DE514-E19-3-C4-D-455-D-B53-B-1-A60-B0003521.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי נאפולי V2 במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+
+        } else if(type === 'shirt2') {
+            title.innerText = "NAPOLI TEE V2";
+            img.src = "https://i.ibb.co/VZ3t3yG/IMG-6331.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי V2 במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+        }
+
+        window.scrollTo(0,0);
+    }
+
+    function showHome() {
+        document.getElementById('home-view').style.display = 'block';
+        document.getElementById('detail-page').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
