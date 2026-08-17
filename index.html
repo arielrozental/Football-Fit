@@ -183,6 +183,7 @@
     <div class="links">
         <a href="#" onclick="showHome()">HOME</a>
         <a href="#collection">SHOP</a>
+        <a href="#winter-collection">WINTER COLLECTION</a>
     </div>
 </nav>
 
@@ -191,6 +192,7 @@
         <h1>NAPOLI</h1>
     </div>
 
+    <!-- קולקציה כללית -->
     <div id="collection" class="shop-title">COLLECTION</div>
 
     <div class="container">
@@ -212,7 +214,7 @@
             </div>
         </div>
 
-        <!-- מכנס 2 (חדש) -->
+        <!-- מכנס 2 -->
         <div class="product-card" onclick="openProduct('pants2')">
             <img src="https://i.ibb.co/p6ByBBVP/DE514-E19-3-C4-D-455-D-B53-B-1-A60-B0003521.jpg" alt="NAPOLI PANTS V2">
             <div class="product-info">
@@ -221,11 +223,34 @@
             </div>
         </div>
 
-        <!-- חולצה 2 (חדש) -->
+        <!-- חולצה 2 -->
         <div class="product-card" onclick="openProduct('shirt2')">
             <img src="https://i.ibb.co/VZ3t3yG/IMG-6331.jpg" alt="NAPOLI TEE V2">
             <div class="product-info">
                 <h3>NAPOLI TEE V2</h3>
+                <div class="price">₪70</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- קולקציית חורף -->
+    <div id="winter-collection" class="shop-title">WINTER COLLECTION</div>
+
+    <div class="container">
+        <!-- חולצת חורף -->
+        <div class="product-card" onclick="openProduct('winter_shirt')">
+            <img src="https://i.ibb.co/mCgTsThH/2590c3b6-5280-40ca-8c63-afc289bb2823.jpg" alt="WINTER TEE">
+            <div class="product-info">
+                <h3>WINTER TEE</h3>
+                <div class="price">₪70</div>
+            </div>
+        </div>
+
+        <!-- מכנסי חורף -->
+        <div class="product-card" onclick="openProduct('winter_pants')">
+            <img src="https://i.ibb.co/ZprX5TZz/1f026208-ffae-44e4-ac99-9e95a7a2768d.jpg" alt="WINTER PANTS">
+            <div class="product-info">
+                <h3>WINTER PANTS</h3>
                 <div class="price">₪70</div>
             </div>
         </div>
@@ -296,6 +321,18 @@
             title.innerText = "NAPOLI TEE V2";
             img.src = "https://i.ibb.co/VZ3t3yG/IMG-6331.jpg";
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי V2 במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+
+        } else if(type === 'winter_shirt') {
+            title.innerText = "WINTER TEE";
+            img.src = "https://i.ibb.co/mCgTsThH/2590c3b6-5280-40ca-8c63-afc289bb2823.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת החורף (WINTER TEE) במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+
+        } else if(type === 'winter_pants') {
+            title.innerText = "WINTER PANTS";
+            img.src = "https://i.ibb.co/ZprX5TZz/1f026208-ffae-44e4-ac99-9e95a7a2768d.jpg";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי החורף (WINTER PANTS) במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
         }
 
