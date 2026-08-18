@@ -65,8 +65,8 @@
         .product-card img {
             width: 100%;
             height: auto;
-            aspect-ratio: 3 / 4; /* מציג את התמונה לאורך */
-            object-fit: contain; /* שומר על התמונה שלמה בלי לקטוע קצוות */
+            aspect-ratio: 3 / 4;
+            object-fit: contain;
             display: block;
             background-color: #0a0a0a;
             padding: 10px;
@@ -255,7 +255,7 @@
             </div>
         </div>
 
-        <!-- חולצת חורף 2 (חדש) -->
+        <!-- חולצת חורף 2 -->
         <div class="product-card" onclick="openProduct('winter_shirt2')">
             <img src="https://i.ibb.co/0V9jWM6y/3765-E808-0300-4-AEA-9-C18-ED052-DD78-AD0.png" alt="WINTER TEE V2">
             <div class="product-info">
@@ -264,7 +264,7 @@
             </div>
         </div>
 
-        <!-- מכנסי חורף 2 (חדש) -->
+        <!-- מכנסי חורף 2 -->
         <div class="product-card" onclick="openProduct('winter_pants2')">
             <img src="https://i.ibb.co/0jBfNCT5/50184-E2-F-0215-48-B3-9-BA1-C6572-DF21152.png" alt="WINTER PANTS V2">
             <div class="product-info">
@@ -290,11 +290,7 @@
         <h2 id="detail-title"></h2>
         <div id="detail-price" class="detail-price">₪70</div>
         
-        <p class="detail-description">
-            100% כותנה איכותית. <br>
-            נשמרת טוב, נוחה לכל כיס וגם לכל בן אדם. <br><br>
-            <strong>תודה שקניתם נאפולי!</strong>
-        </p>
+        <p id="detail-description" class="detail-description"></p>
 
         <div id="extra-code-area" style="margin-bottom: 20px;"></div>
 
@@ -313,6 +309,7 @@
         
         const title = document.getElementById('detail-title');
         const img = document.getElementById('detail-img');
+        const desc = document.getElementById('detail-description');
         const link = document.getElementById('wa-link');
         const extraArea = document.getElementById('extra-code-area');
         const phone = "972508353336";
@@ -320,48 +317,56 @@
         if(type === 'shirt') {
             title.innerText = "NAPOLI TEE";
             img.src = "https://i.ibb.co/3DsF0G9/8a767e44-7d44-4a55-9626-8de6dad96984.jpg";
+            desc.innerHTML = `חולצת T-shirt קלאסית בעיצוב נקי עם לוגו Napoli בולט.<br>עשויה 100% כותנה איכותית ונושמת, בגזרה נוחה ומחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי במחיר 70 ש"ח`;
             extraArea.innerHTML = ``;
             
         } else if(type === 'shorts') {
             title.innerText = "NAPOLI SHORTS";
             img.src = "https://i.ibb.co/KxfrB6TS/IMG-6307.png";
+            desc.innerHTML = `מכנסי קצר קלילים ואופנתיים בגזרה יומיומית נוחה.<br>עשויים 100% כותנה רכה עם גומי גמיש במותן. איכות מעולה במחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנס נאפולי במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
 
         } else if(type === 'pants2') {
             title.innerText = "NAPOLI PANTS V2";
             img.src = "https://i.ibb.co/p6ByBBVP/DE514-E19-3-C4-D-455-D-B53-B-1-A60-B0003521.jpg";
+            desc.innerHTML = `מכנסי אופנה בגזרה עדכנית ומשודרגת המתאימים לכל יציאה.<br>עשויים 100% כותנה עמידה, נוחים במיוחד ומציעים מחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי נאפולי V2 במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
 
         } else if(type === 'shirt2') {
             title.innerText = "NAPOLI TEE V2";
             img.src = "https://i.ibb.co/VZ3t3yG/IMG-6331.jpg";
+            desc.innerHTML = `גרסה נוספת וייחודית לחולצת הטי-שירט של נאפולי עם הדפס מודרני.<br>עשויה 100% כותנה איכותית שנשמרת מצוין בכביסות במחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת נאפולי V2 במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
 
         } else if(type === 'winter_shirt') {
             title.innerText = "WINTER TEE";
             img.src = "https://i.ibb.co/mCgTsThH/2590c3b6-5280-40ca-8c63-afc289bb2823.jpg";
+            desc.innerHTML = `חולצת חורף מחממת במראה סטריטוור נקי מקולקציית החורף.<br>עשויה 100% כותנה עבה ואיכותית ששומרת על החום במחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת החורף (WINTER TEE) במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
 
         } else if(type === 'winter_pants') {
             title.innerText = "WINTER PANTS";
             img.src = "https://i.ibb.co/ZprX5TZz/1f026208-ffae-44e4-ac99-9e95a7a2768d.jpg";
+            desc.innerHTML = `מכנסי חורף מחממים ונוחים בעיצוב ספורטיבי מעודן.<br>עשויים 100% כותנה איכותית לימים הקרים במחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי החורף (WINTER PANTS) במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
 
         } else if(type === 'winter_shirt2') {
             title.innerText = "WINTER TEE V2";
             img.src = "https://i.ibb.co/0V9jWM6y/3765-E808-0300-4-AEA-9-C18-ED052-DD78-AD0.png";
+            desc.innerHTML = `חולצת חורף בסטייל מיוחד מקולקציית החורף החדשה.<br>עשויה 100% כותנה נעימה ועמידה, במראה נקי ומחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת החורף (WINTER TEE V2) במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
 
         } else if(type === 'winter_pants2') {
             title.innerText = "WINTER PANTS V2";
             img.src = "https://i.ibb.co/0jBfNCT5/50184-E2-F-0215-48-B3-9-BA1-C6572-DF21152.png";
+            desc.innerHTML = `דגם שרבי ומעוצב של מכנסי חורף שמשלבים נוחות בלתי פתורה וסטייל מרשים.<br>עשויים 100% כותנה איכותית במחיר לכל כיס.<br><br><strong>תודה שקניתם נאפולי!</strong>`;
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי החורף (WINTER PANTS V2) במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
         }
