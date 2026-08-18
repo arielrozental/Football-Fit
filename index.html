@@ -237,7 +237,7 @@
     <div id="winter-collection" class="shop-title">WINTER COLLECTION</div>
 
     <div class="container">
-        <!-- חולצת חורף -->
+        <!-- חולצת חורף 1 -->
         <div class="product-card" onclick="openProduct('winter_shirt')">
             <img src="https://i.ibb.co/mCgTsThH/2590c3b6-5280-40ca-8c63-afc289bb2823.jpg" alt="WINTER TEE">
             <div class="product-info">
@@ -246,11 +246,29 @@
             </div>
         </div>
 
-        <!-- מכנסי חורף -->
+        <!-- מכנסי חורף 1 -->
         <div class="product-card" onclick="openProduct('winter_pants')">
             <img src="https://i.ibb.co/ZprX5TZz/1f026208-ffae-44e4-ac99-9e95a7a2768d.jpg" alt="WINTER PANTS">
             <div class="product-info">
                 <h3>WINTER PANTS</h3>
+                <div class="price">₪70</div>
+            </div>
+        </div>
+
+        <!-- חולצת חורף 2 (חדש) -->
+        <div class="product-card" onclick="openProduct('winter_shirt2')">
+            <img src="https://i.ibb.co/0V9jWM6y/3765-E808-0300-4-AEA-9-C18-ED052-DD78-AD0.png" alt="WINTER TEE V2">
+            <div class="product-info">
+                <h3>WINTER TEE V2</h3>
+                <div class="price">₪70</div>
+            </div>
+        </div>
+
+        <!-- מכנסי חורף 2 (חדש) -->
+        <div class="product-card" onclick="openProduct('winter_pants2')">
+            <img src="https://i.ibb.co/0jBfNCT5/50184-E2-F-0215-48-B3-9-BA1-C6572-DF21152.png" alt="WINTER PANTS V2">
+            <div class="product-info">
+                <h3>WINTER PANTS V2</h3>
                 <div class="price">₪70</div>
             </div>
         </div>
@@ -333,6 +351,18 @@
             title.innerText = "WINTER PANTS";
             img.src = "https://i.ibb.co/ZprX5TZz/1f026208-ffae-44e4-ac99-9e95a7a2768d.jpg";
             link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי החורף (WINTER PANTS) במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+
+        } else if(type === 'winter_shirt2') {
+            title.innerText = "WINTER TEE V2";
+            img.src = "https://i.ibb.co/0V9jWM6y/3765-E808-0300-4-AEA-9-C18-ED052-DD78-AD0.png";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את חולצת החורף (WINTER TEE V2) במחיר 70 ש"ח`;
+            extraArea.innerHTML = "";
+
+        } else if(type === 'winter_pants2') {
+            title.innerText = "WINTER PANTS V2";
+            img.src = "https://i.ibb.co/0jBfNCT5/50184-E2-F-0215-48-B3-9-BA1-C6572-DF21152.png";
+            link.href = `https://wa.me/${phone}?text=היי, אני רוצה להזמין את מכנסי החורף (WINTER PANTS V2) במחיר 70 ש"ח`;
             extraArea.innerHTML = "";
         }
 
